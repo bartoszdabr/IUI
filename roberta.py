@@ -60,7 +60,7 @@ def test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams) -> None:
     print(model.evaluate(X_test, Y_test, return_dict=True))
     # fscore cannot be calculated as a callback due to bug in tensorflow
     y_pred = np.argmax(model.predict(X_test), axis=-1)
-    f_score = f1_score(Y_test, y_pred, average=None)
+    f_score = f1_score(np.argmax(Y_test, axis=1), y_pred, average=None)
     print(f'f_score={f_score}')
 
 
