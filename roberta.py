@@ -79,9 +79,9 @@ def roberta_flow(df) -> None:
     X_test, X_val, Y_test, Y_val = train_test_split(X_test, Y_test, test_size=0.5,
                                                     random_state=42)
 
-    for dropout_rate in (HP_DROPOUT.domain.min_value, HP_DROPOUT.domain.max_value):
+    for dropout_rate in range(1, 6, 1):
         hparams = {
-            HP_DROPOUT: dropout_rate,
+            HP_DROPOUT: dropout_rate * 0.01,
         }
         print({h.name: hparams[h] for h in hparams})
         test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams)
