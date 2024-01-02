@@ -17,7 +17,7 @@ def build_roberta(hparams):
     robert_preprocess = hub.KerasLayer(
         "https://kaggle.com/models/kaggle/roberta/frameworks/TensorFlow2/variations/en-cased-preprocess/versions/1")
     robert_encoder = hub.KerasLayer(
-        "https://www.kaggle.com/models/kaggle/roberta/frameworks/TensorFlow2/variations/en-cased-l-24-h-1024-a-16/versions/1",
+        "https://www.kaggle.com/models/kaggle/roberta/frameworks/TensorFlow2/variations/en-cased-l-12-h-768-a-12/versions/1",
         trainable=True)
     input_prompt = tf.keras.layers.Input(shape=(), dtype=tf.string, name="input prompt")
     prompt = robert_preprocess(input_prompt)
