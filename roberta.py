@@ -44,7 +44,7 @@ def test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams) -> None:
         check_point_path,
         monitor="val_loss",
         verbose=0,
-        save_best_only=False,
+        save_best_only=True,
         save_weights_only=False,
         mode="auto",
         save_freq="epoch"
