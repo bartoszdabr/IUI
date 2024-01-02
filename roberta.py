@@ -49,7 +49,7 @@ def test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams) -> None:
         mode="auto",
         save_freq="epoch"
     )
-    early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10)
+    early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
     log_dir = os.path.join("logs/roberta/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
     tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
     hparams_callback = hp.KerasCallback(log_dir, hparams)
