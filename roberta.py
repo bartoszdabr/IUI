@@ -65,6 +65,9 @@ def test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams) -> None:
 
 
 def roberta_flow(df) -> None:
+    config = tf.ConfigProto()
+    config.gpu_options.allow_growth = True
+    sess = tf.Session(config=config)
     labels = df['label'].values.astype("U")
     one_hot_encoded = LabelBinarizer().fit_transform(labels)
     X = df['sample'].values.astype("U")
