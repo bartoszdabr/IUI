@@ -28,7 +28,7 @@ def build_roberta(hparams):
     # Dropout layers
     prompt = tf.keras.layers.Dropout(hparams[HP_DROPOUT], name="Dropout_Prompt")(prompt)
     # Dense layers
-    # prompt = tf.keras.layers.Dense(256, activation="relu", name="RE_lu_dense_Prompt")(prompt)
+    prompt = tf.keras.layers.Dense(256, activation="relu", name="RE_lu_dense_Prompt")(prompt)
     outputs = tf.keras.layers.Dense(8, activation="softmax", name="outputs")(prompt)
     model = tf.keras.models.Model(inputs=input_prompt, outputs=outputs)
 
@@ -49,13 +49,13 @@ def test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams) -> None:
         mode="auto",
         save_freq="epoch"
     )
-    early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
+    early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10)
     log_dir = os.path.join("logs/roberta/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
     tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
     hparams_callback = hp.KerasCallback(log_dir, hparams)
     model = build_roberta(hparams)
-    model.fit(X_train, Y_train, epochs=40, batch_size=8, validation_data=(X_val, Y_val),
-              callbacks=[early_stopping, check_point, tensorboard_callback, hparams_callback])
+    model.fit(X_train, Y_train, epochs=40, batch_size=16, validation_data=(X_val, Y_val),
+              callbacks=[early_stopping, tensorboard_callback, hparams_callback])
 
     print(model.evaluate(X_test, Y_test, return_dict=True))
     # fscore cannot be calculated as a callback due to bug in tensorflow
