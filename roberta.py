@@ -10,14 +10,14 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelBinarizer
 from tensorboard.plugins.hparams import api as hp
 
-HP_DROPOUT = hp.HParam('dropout', hp.RealInterval(0.1, 0.2))
+HP_DROPOUT = hp.HParam('dropout', hp.RealInterval(0.1, 0.5))
 
 
 def build_roberta(hparams):
     robert_preprocess = hub.KerasLayer(
         "https://kaggle.com/models/kaggle/roberta/frameworks/TensorFlow2/variations/en-cased-preprocess/versions/1")
     robert_encoder = hub.KerasLayer(
-        "https://www.kaggle.com/models/kaggle/roberta/frameworks/TensorFlow2/variations/en-cased-l-12-h-768-a-12/versions/1",
+        "https://www.kaggle.com/models/kaggle/roberta/frameworks/TensorFlow2/variations/en-cased-l-24-h-1024-a-16/versions/1",
         trainable=True)
     input_prompt = tf.keras.layers.Input(shape=(), dtype=tf.string, name="input prompt")
     prompt = robert_preprocess(input_prompt)
@@ -49,12 +49,12 @@ def test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams) -> None:
         mode="auto",
         save_freq="epoch"
     )
-    early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
+    early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10)
     log_dir = os.path.join("logs/roberta/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
     tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
     hparams_callback = hp.KerasCallback(log_dir, hparams)
     model = build_roberta(hparams)
-    model.fit(X_train, Y_train, epochs=20, batch_size=32, validation_data=(X_val, Y_val),
+    model.fit(X_train, Y_train, epochs=40, batch_size=32, validation_data=(X_val, Y_val),
               callbacks=[early_stopping, check_point, tensorboard_callback, hparams_callback])
 
     print(model.evaluate(X_test, Y_test, return_dict=True))
