@@ -53,7 +53,9 @@ def test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams) -> None:
     log_dir = os.path.join("logs/roberta/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
     tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
     hparams_callback = hp.KerasCallback(log_dir, hparams)
+    import tensorflow_model_optimization as tfmot
     model = build_roberta(hparams)
+    model = tfmot.sparsity.keras.prune_low_magnitude(model)
     model.fit(X_train, Y_train, epochs=40, batch_size=16, validation_data=(X_val, Y_val),
               callbacks=[early_stopping, tensorboard_callback, hparams_callback])
 
