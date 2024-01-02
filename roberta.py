@@ -54,7 +54,7 @@ def test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams) -> None:
     tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
     hparams_callback = hp.KerasCallback(log_dir, hparams)
     model = build_roberta(hparams)
-    model.fit(X_train, Y_train, epochs=40, batch_size=32, validation_data=(X_val, Y_val),
+    model.fit(X_train, Y_train, epochs=40, batch_size=8, validation_data=(X_val, Y_val),
               callbacks=[early_stopping, check_point, tensorboard_callback, hparams_callback])
 
     print(model.evaluate(X_test, Y_test, return_dict=True))
