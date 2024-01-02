@@ -55,7 +55,7 @@ def test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams) -> None:
     hparams_callback = hp.KerasCallback(log_dir, hparams)
     import tensorflow_model_optimization as tfmot
     model = build_roberta(hparams)
-    model = tfmot.quantization.keras.quantize_model(original_model)
+    model = tfmot.quantization.keras.quantize_model(model)
     model.fit(X_train, Y_train, epochs=40, batch_size=16, validation_data=(X_val, Y_val),
               callbacks=[early_stopping, tensorboard_callback, hparams_callback])
 
