@@ -34,7 +34,7 @@ def build_roberta(hparams):
 
     model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=2e-5), loss=tf.keras.losses.CategoricalCrossentropy(),
                   metrics=['accuracy', F1Score(num_classes=8, average='micro')])
-    model.summary()
+    # model.summary()
     return model
 
 
@@ -84,7 +84,7 @@ def roberta_flow(df) -> None:
 
     for dropout_rate in range(1, 6, 1):
         hparams = {
-            HP_DROPOUT: dropout_rate * 0.01,
+            HP_DROPOUT: dropout_rate * 0.1,
         }
         print({h.name: hparams[h] for h in hparams})
         test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams)
