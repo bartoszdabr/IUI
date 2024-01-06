@@ -24,11 +24,10 @@ def build_roberta(hparams):
     prompt = robert_preprocess(input_prompt)
     prompt = robert_encoder(prompt)["sequence_output"]
 
+    # LayerNormalization Layers
+    prompt = tf.keras.layers.LayerNormalization(name="LayerNormalization_Promt")(prompt[:, 0, :])
     prompt = tf.keras.layers.Dropout(hparams[HP_DROPOUT], name="Dropout_Prompt")(prompt)
     prompt = tf.keras.layers.BatchNormalization()(prompt)
-
-    # LayerNormalization Layers
-    # prompt = tf.keras.layers.LayerNormalization(name="LayerNormalization_Promt")(prompt[:, 0, :])
     # Dropout layers
     prompt = tf.keras.layers.Dropout(hparams[HP_DROPOUT], name="Dropout_Prompt2")(prompt)
     # Dense layers
