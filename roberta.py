@@ -24,8 +24,11 @@ def build_roberta(hparams):
     prompt = robert_preprocess(input_prompt)
     prompt = robert_encoder(prompt)["sequence_output"]
 
+    prompt = tf.keras.layers.Dropout(hparams[HP_DROPOUT], name="Dropout_Prompt")(prompt)
+    prompt = tf.keras.layers.BatchNormalization()(prompt)
+
     # LayerNormalization Layers
-    prompt = tf.keras.layers.LayerNormalization(name="LayerNormalization_Promt")(prompt[:, 0, :])
+    # prompt = tf.keras.layers.LayerNormalization(name="LayerNormalization_Promt")(prompt[:, 0, :])
     # Dropout layers
     prompt = tf.keras.layers.Dropout(hparams[HP_DROPOUT], name="Dropout_Prompt")(prompt)
     # Dense layers
@@ -66,8 +69,6 @@ def test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams) -> None:
 
 
 def roberta_flow(df) -> None:
-    physical_devices = tf.config.list_physical_devices('GPU')
-    tf.config.experimental.set_memory_growth(physical_devices[0], True)
     labels = df['label'].values.astype("U")
     one_hot_encoded = LabelBinarizer().fit_transform(labels)
     X = df['sample'].values.astype("U")
