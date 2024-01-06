@@ -30,7 +30,7 @@ def build_roberta(hparams):
     # LayerNormalization Layers
     # prompt = tf.keras.layers.LayerNormalization(name="LayerNormalization_Promt")(prompt[:, 0, :])
     # Dropout layers
-    prompt = tf.keras.layers.Dropout(hparams[HP_DROPOUT], name="Dropout_Prompt")(prompt)
+    prompt = tf.keras.layers.Dropout(hparams[HP_DROPOUT], name="Dropout_Prompt2")(prompt)
     # Dense layers
     outputs = tf.keras.layers.Dense(8, activation="softmax", name="outputs")(prompt)
     model = tf.keras.models.Model(inputs=input_prompt, outputs=outputs)
