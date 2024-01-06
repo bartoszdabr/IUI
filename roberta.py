@@ -10,6 +10,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelBinarizer
 from tensorboard.plugins.hparams import api as hp
 from tensorflow_addons.metrics import F1Score
+import nlpaug.augmenter.char as nac
 
 HP_DROPOUT = hp.HParam('dropout', hp.RealInterval(0.1, 0.5))
 
@@ -35,7 +36,7 @@ def build_roberta(hparams):
     model = tf.keras.models.Model(inputs=input_prompt, outputs=outputs)
 
     model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=2e-5), loss=tf.keras.losses.CategoricalCrossentropy(),
-                  metrics=['accuracy', F1Score(num_classes=8, average='micro')])
+                  metrics=['accuracy'])
     # model.summary()
     return model
 
@@ -52,7 +53,7 @@ def test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams) -> None:
         mode="auto",
         save_freq="epoch"
     )
-    early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=10)
+    early_stopping = tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
     log_dir = os.path.join("logs/roberta/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
     tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
     hparams_callback = hp.KerasCallback(log_dir, hparams)
@@ -67,6 +68,14 @@ def test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams) -> None:
     print(f'f_score={f_score}')
 
 
+def augment_text(text):
+    augmenter = nac.RandomCharAug(action="insert")
+
+    augmented_text = augmenter.augment(text)
+
+    return augmented_text
+
+
 def roberta_flow(df) -> None:
     labels = df['label'].values.astype("U")
     one_hot_encoded = LabelBinarizer().fit_transform(labels)
@@ -79,6 +88,8 @@ def roberta_flow(df) -> None:
     text_vectorizer.adapt(X)
     X_train, X_test, Y_train, Y_test = train_test_split(X, one_hot_encoded, test_size=0.1,
                                                         random_state=42)
+    X_train = np.concatenate([X_train, [augment_text(text) for text in X_train]], axis=0)
+    Y_train = np.concatenate([Y_train, Y_train], axis=0)
     X_test, X_val, Y_test, Y_val = train_test_split(X_test, Y_test, test_size=0.5,
                                                     random_state=42)
 
