@@ -91,7 +91,7 @@ def roberta_flow(df) -> None:
 
     augmented_X_train = [augment_text(text) for text in X_train]
 
-    X_train = np.concatenate([X_train, augmented_X_train])
+    X_train = np.concatenate([X_train, np.squeeze(augmented_X_train, axis=1)])
     Y_train = np.concatenate([Y_train, Y_train], axis=0)
     X_test, X_val, Y_test, Y_val = train_test_split(X_test, Y_test, test_size=0.5,
                                                     random_state=42)
