@@ -9,6 +9,7 @@ from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelBinarizer
 from tensorboard.plugins.hparams import api as hp
+from tensorflow_addons.metrics import F1Score
 
 HP_DROPOUT = hp.HParam('dropout', hp.RealInterval(0.1, 0.5))
 
@@ -28,11 +29,11 @@ def build_roberta(hparams):
     # Dropout layers
     prompt = tf.keras.layers.Dropout(hparams[HP_DROPOUT], name="Dropout_Prompt")(prompt)
     # Dense layers
-    outputs = tf.keras.layers.Dense(8, activation="softmax", name="outputs", kernel_regularizer=tf.keras.regularizers.l2(0.01))(prompt)
+    outputs = tf.keras.layers.Dense(8, activation="softmax", name="outputs")(prompt)
     model = tf.keras.models.Model(inputs=input_prompt, outputs=outputs)
 
-    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001), loss=tf.keras.losses.CategoricalCrossentropy(),
-                  metrics=['accuracy'])
+    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=2e-5), loss=tf.keras.losses.CategoricalCrossentropy(),
+                  metrics=['accuracy', F1Score(num_classes=8, average='micro')])
     model.summary()
     return model
 
