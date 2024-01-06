@@ -31,7 +31,7 @@ def build_roberta(hparams):
     outputs = tf.keras.layers.Dense(8, activation="softmax", name="outputs", kernel_regularizer=tf.keras.regularizers.l2(0.01))(prompt)
     model = tf.keras.models.Model(inputs=input_prompt, outputs=outputs)
 
-    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=2e-5), loss=tf.keras.losses.CategoricalCrossentropy(class_weight='auto'),
+    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.0001), loss=tf.keras.losses.CategoricalCrossentropy(),
                   metrics=['accuracy'])
     model.summary()
     return model
