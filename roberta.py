@@ -88,7 +88,10 @@ def roberta_flow(df) -> None:
     text_vectorizer.adapt(X)
     X_train, X_test, Y_train, Y_test = train_test_split(X, one_hot_encoded, test_size=0.1,
                                                         random_state=42)
-    X_train = np.concatenate([X_train, [augment_text(text) for text in X_train]], axis=0)
+
+    augmented_X_train = [augment_text(text) for text in X_train]
+
+    X_train = np.concatenate([X_train, augmented_X_train])
     Y_train = np.concatenate([Y_train, Y_train], axis=0)
     X_test, X_val, Y_test, Y_val = train_test_split(X_test, Y_test, test_size=0.5,
                                                     random_state=42)
