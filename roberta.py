@@ -17,8 +17,8 @@ def build_roberta(hparams):
     robert_preprocess = hub.KerasLayer(
         "https://kaggle.com/models/kaggle/roberta/frameworks/TensorFlow2/variations/en-cased-preprocess/versions/1")
     robert_encoder = hub.KerasLayer(
-        "https://www.kaggle.com/models/kaggle/roberta/frameworks/TensorFlow2/variations/en-cased-l-24-h-1024-a-16/versions/1",
-        trainable=True)
+        "https://www.kaggle.com/models/kaggle/roberta/frameworks/TensorFlow2/variations/en-cased-l-12-h-768-a-12/versions/1",
+        trainable=False)
     input_prompt = tf.keras.layers.Input(shape=(), dtype=tf.string, name="input prompt")
     prompt = robert_preprocess(input_prompt)
     prompt = robert_encoder(prompt)["sequence_output"]
@@ -28,12 +28,12 @@ def build_roberta(hparams):
     # Dropout layers
     prompt = tf.keras.layers.Dropout(hparams[HP_DROPOUT], name="Dropout_Prompt")(prompt)
     # Dense layers
-    prompt = tf.keras.layers.Dense(256, activation="relu", name="RE_lu_dense_Prompt")(prompt)
     outputs = tf.keras.layers.Dense(8, activation="softmax", name="outputs")(prompt)
     model = tf.keras.models.Model(inputs=input_prompt, outputs=outputs)
 
     model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=2e-5), loss='categorical_crossentropy',
                   metrics=['accuracy'])
+    model.summary()
     return model
 
 
@@ -54,7 +54,7 @@ def test_train(X_train, Y_train, X_val, Y_val, X_test, Y_test, hparams) -> None:
     tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
     hparams_callback = hp.KerasCallback(log_dir, hparams)
     model = build_roberta(hparams)
-    model.fit(X_train, Y_train, epochs=40, batch_size=16, validation_data=(X_val, Y_val),
+    model.fit(X_train, Y_train, epochs=40, batch_size=64, validation_data=(X_val, Y_val),
               callbacks=[early_stopping, tensorboard_callback, hparams_callback])
 
     print(model.evaluate(X_test, Y_test, return_dict=True))
