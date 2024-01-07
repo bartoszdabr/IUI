@@ -11,6 +11,7 @@ from sklearn.preprocessing import LabelBinarizer
 from tensorboard.plugins.hparams import api as hp
 from tensorflow_addons.metrics import F1Score
 import nlpaug.augmenter.char as nac
+from googletrans import Translator
 
 HP_DROPOUT = hp.HParam('dropout', hp.RealInterval(0.1, 0.5))
 
@@ -76,10 +77,17 @@ def augment_text(text):
     return augmented_text
 
 
+def translate_text(X):
+    translator = Translator()
+    for text in X:
+        text = translator.translate(text, stc='pl', dest='en').text
+
+
 def roberta_flow(df) -> None:
     labels = df['label'].values.astype("U")
     one_hot_encoded = LabelBinarizer().fit_transform(labels)
     X = df['sample'].values.astype("U")
+    translate_text(X)
     text_vectorizer = tf.keras.layers.TextVectorization(max_tokens=10000,
                                                         output_sequence_length=24,
                                                         standardize="lower_and_strip_punctuation",
