@@ -88,14 +88,14 @@ def roberta_flow(df) -> None:
     labels = df['label'].values.astype("U")
     one_hot_encoded = LabelBinarizer().fit_transform(labels)
     X = df['sample'].values.astype("U")
-    X = translate_text(X)
-    pd.DataFrame({'text': X, 'label': labels}).to_csv('dbdata_eng.csv', index=True)
-    text_vectorizer = tf.keras.layers.TextVectorization(max_tokens=10000,
-                                                        output_sequence_length=24,
-                                                        standardize="lower_and_strip_punctuation",
-                                                        split="whitespace",
-                                                        output_mode="int")
-    text_vectorizer.adapt(X)
+    # X = translate_text(X)
+    # pd.DataFrame({'text': X, 'label': labels}).to_csv('dbdata_eng.csv', index=True)
+    # text_vectorizer = tf.keras.layers.TextVectorization(max_tokens=10000,
+    #                                                     output_sequence_length=24,
+    #                                                     standardize="lower_and_strip_punctuation",
+    #                                                     split="whitespace",
+    #                                                     output_mode="int")
+    # text_vectorizer.adapt(X)
     X_train, X_test, Y_train, Y_test = train_test_split(X, one_hot_encoded, test_size=0.1,
                                                         random_state=42)
 
