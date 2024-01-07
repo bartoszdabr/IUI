@@ -20,10 +20,10 @@ HP_DROPOUT = hp.HParam('dropout', hp.RealInterval(0.1, 0.5))
 def build_roberta(hparams):
     input_prompt = tf.keras.layers.Input(shape=(), dtype=tf.string, name="input prompt")
     robert_preprocess = hub.KerasLayer(
-        "https://kaggle.com/models/tensorflow/bert/frameworks/TensorFlow2/variations/en-uncased-preprocess/versions/3")
+        "https://kaggle.com/models/kaggle/roberta/frameworks/TensorFlow2/variations/en-cased-preprocess/versions/1")
     prompt = robert_preprocess(input_prompt)
     robert_encoder = hub.KerasLayer(
-        "https://www.kaggle.com/models/tensorflow/bert/frameworks/tensorFlow2/variations/bert-en-uncased-l-12-h-768-a-12/versions/2",
+        "https://www.kaggle.com/models/kaggle/roberta/frameworks/TensorFlow2/variations/en-cased-l-12-h-768-a-12/versions/1",
         trainable=True)
     prompt = robert_encoder(prompt)["sequence_output"]
 
