@@ -79,15 +79,16 @@ def augment_text(text):
 
 def translate_text(X):
     translator = Translator()
-    for text in X:
-        text = translator.translate(text, stc='pl', dest='en').text
+    translated_X = [translator.translate(text, src='pl', dest='en').text for text in X]
+    return np.array(translated_X)
 
 
 def roberta_flow(df) -> None:
     labels = df['label'].values.astype("U")
     one_hot_encoded = LabelBinarizer().fit_transform(labels)
     X = df['sample'].values.astype("U")
-    translate_text(X)
+    X = translate_text(X)
+    np.savetxt('dbdata_eng.csv', X, delimiter=',', fmt='%d')
     text_vectorizer = tf.keras.layers.TextVectorization(max_tokens=10000,
                                                         output_sequence_length=24,
                                                         standardize="lower_and_strip_punctuation",
