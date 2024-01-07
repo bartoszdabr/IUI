@@ -96,7 +96,7 @@ def roberta_flow(df) -> None:
     #                                                     split="whitespace",
     #                                                     output_mode="int")
     # text_vectorizer.adapt(X)
-    X_train, X_test, Y_train, Y_test = train_test_split(X, one_hot_encoded, test_size=0.1,
+    X_train, X_test, Y_train, Y_test = train_test_split(X, one_hot_encoded, test_size=0.3,
                                                         random_state=42)
 
     augmented_X_train = [augment_text(text) for text in X_train]
