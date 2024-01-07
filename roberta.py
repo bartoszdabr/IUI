@@ -18,13 +18,13 @@ HP_DROPOUT = hp.HParam('dropout', hp.RealInterval(0.1, 0.5))
 
 
 def build_roberta(hparams):
-    robert_preprocess = hub.KerasLayer(
-        "https://kaggle.com/models/kaggle/roberta/frameworks/TensorFlow2/variations/en-cased-preprocess/versions/1")
-    robert_encoder = hub.KerasLayer(
-        "https://www.kaggle.com/models/kaggle/roberta/frameworks/TensorFlow2/variations/en-cased-l-12-h-768-a-12/versions/1",
-        trainable=True)
     input_prompt = tf.keras.layers.Input(shape=(), dtype=tf.string, name="input prompt")
+    robert_preprocess = hub.KerasLayer(
+        "https://kaggle.com/models/tensorflow/bert/frameworks/TensorFlow2/variations/en-uncased-preprocess/versions/3")
     prompt = robert_preprocess(input_prompt)
+    robert_encoder = hub.KerasLayer(
+        "https://www.kaggle.com/models/tensorflow/bert/frameworks/tensorFlow2/variations/en-uncased-l-12-h-768-a-12/versions/4",
+        trainable=True)
     prompt = robert_encoder(prompt)["sequence_output"]
 
     # LayerNormalization Layers
@@ -96,7 +96,7 @@ def roberta_flow(df) -> None:
     #                                                     split="whitespace",
     #                                                     output_mode="int")
     # text_vectorizer.adapt(X)
-    X_train, X_test, Y_train, Y_test = train_test_split(X, one_hot_encoded, test_size=0.3,
+    X_train, X_test, Y_train, Y_test = train_test_split(X, one_hot_encoded, test_size=0.1,
                                                         random_state=42)
 
     augmented_X_train = [augment_text(text) for text in X_train]
