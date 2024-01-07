@@ -12,6 +12,7 @@ from tensorboard.plugins.hparams import api as hp
 from tensorflow_addons.metrics import F1Score
 import nlpaug.augmenter.char as nac
 from googletrans import Translator
+import pandas as pd
 
 HP_DROPOUT = hp.HParam('dropout', hp.RealInterval(0.1, 0.5))
 
@@ -88,7 +89,7 @@ def roberta_flow(df) -> None:
     one_hot_encoded = LabelBinarizer().fit_transform(labels)
     X = df['sample'].values.astype("U")
     X = translate_text(X)
-    np.savetxt('dbdata_eng.csv', X, delimiter=',', fmt='%d')
+    pd.DataFrame({'text': X, 'label': labels}).to_csv('dbdata_eng.csv', index=True)
     text_vectorizer = tf.keras.layers.TextVectorization(max_tokens=10000,
                                                         output_sequence_length=24,
                                                         standardize="lower_and_strip_punctuation",
