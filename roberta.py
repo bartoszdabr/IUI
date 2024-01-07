@@ -23,7 +23,7 @@ def build_roberta(hparams):
         "https://kaggle.com/models/tensorflow/bert/frameworks/TensorFlow2/variations/en-uncased-preprocess/versions/3")
     prompt = robert_preprocess(input_prompt)
     robert_encoder = hub.KerasLayer(
-        "https://www.kaggle.com/models/tensorflow/bert/frameworks/tensorFlow2/variations/en-uncased-l-12-h-768-a-12/versions/4",
+        "https://www.kaggle.com/models/tensorflow/bert/frameworks/tensorFlow2/variations/bert-en-uncased-l-12-h-768-a-12/versions/2",
         trainable=True)
     prompt = robert_encoder(prompt)["sequence_output"]
 
