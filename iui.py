@@ -3,11 +3,12 @@ import pandas as pd
 
 from bayes import bayes_flow
 from roberta import roberta_flow
+from svm import svm_flow
 
 
 def parse_args() -> str:
     parser = argparse.ArgumentParser(description="model type")
-    parser.add_argument('--model', choices=['bayes', 'roberta'], default='bayes',
+    parser.add_argument('--model', choices=['bayes', 'roberta', 'svm'], default='bayes',
                         help='Choose the model to train (default is Bayes)')
     parser.add_argument('--language', choices=['eng', 'pl'], default='pl',
                         help='Choose dataset language to train and validate model (default pl)')
@@ -28,3 +29,5 @@ if __name__ == "__main__":
         bayes_flow(df)
     elif model_type == 'roberta':
         roberta_flow(df)
+    elif model_type == 'svm':
+        svm_flow(df)
