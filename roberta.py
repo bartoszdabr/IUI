@@ -4,6 +4,7 @@ import os.path
 import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
+import tensorflow_text as tex # needs to be imported
 from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelBinarizer
