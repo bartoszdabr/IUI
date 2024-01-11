@@ -3,7 +3,9 @@ import pandas as pd
 
 from bayes import bayes_flow
 from roberta import roberta_flow
-from svm import svm_flow
+
+
+# from svm import svm_flow
 
 
 def parse_args() -> str:
@@ -30,4 +32,5 @@ if __name__ == "__main__":
     elif model_type == 'roberta':
         roberta_flow(df)
     elif model_type == 'svm':
-        svm_flow(df)
+        pass
+        # svm_flow(df)

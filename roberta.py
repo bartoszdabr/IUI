@@ -4,15 +4,11 @@ import os.path
 import numpy as np
 import tensorflow as tf
 import tensorflow_hub as hub
-import tensorflow_text as text
 from sklearn.metrics import f1_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelBinarizer
 from tensorboard.plugins.hparams import api as hp
-from tensorflow_addons.metrics import F1Score
 import nlpaug.augmenter.char as nac
-from googletrans import Translator
-import pandas as pd
 
 HP_DROPOUT = hp.HParam('dropout', hp.RealInterval(0.1, 0.5))
 
@@ -37,7 +33,8 @@ def build_roberta(hparams):
     outputs = tf.keras.layers.Dense(8, activation="softmax", name="outputs")(prompt)
     model = tf.keras.models.Model(inputs=input_prompt, outputs=outputs)
 
-    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=2e-5), loss=tf.keras.losses.CategoricalCrossentropy(),
+    model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=2e-5),
+                  loss=tf.keras.losses.CategoricalCrossentropy(),
                   metrics=['accuracy'])
     # model.summary()
     return model
@@ -78,18 +75,10 @@ def augment_text(text):
     return augmented_text
 
 
-def translate_text(X):
-    translator = Translator()
-    translated_X = [translator.translate(text, src='pl', dest='en').text for text in X]
-    return np.array(translated_X)
-
-
 def roberta_flow(df) -> None:
     labels = df['label'].values.astype("U")
     one_hot_encoded = LabelBinarizer().fit_transform(labels)
     X = df['sample'].values.astype("U")
-    # X = translate_text(X)
-    # pd.DataFrame({'text': X, 'label': labels}).to_csv('dbdata_eng.csv', index=True)
     # text_vectorizer = tf.keras.layers.TextVectorization(max_tokens=10000,
     #                                                     output_sequence_length=24,
     #                                                     standardize="lower_and_strip_punctuation",
