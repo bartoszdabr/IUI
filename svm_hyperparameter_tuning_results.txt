@@ -1,0 +1,148 @@
+C:\Users\bdabrows\PycharmProjects\iui\IUI\venv\Scripts\python.exe C:\Users\bdabrows\PycharmProjects\iui\IUI\iui.py --model svm --language pl
+Training svm | language: pl
+---------
+Training Doc2Vec with vector_size=50, min_count=2, epochs=30
+Training SVM with kernel: linear
+Best Parameters: {'C': 10, 'gamma': 0.01}
+Accuracy on the test set: 84.67%
+---------
+Training SVM with kernel: poly
+Best Parameters: {'C': 100, 'gamma': 'scale'}
+Accuracy on the test set: 80.29%
+---------
+Training SVM with kernel: rbf
+Best Parameters: {'C': 10, 'gamma': 0.1}
+Accuracy on the test set: 83.94%
+---------
+Training SVM with kernel: sigmoid
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 83.94%
+---------
+---------
+Training Doc2Vec with vector_size=50, min_count=2, epochs=50
+Training SVM with kernel: linear
+Best Parameters: {'C': 10, 'gamma': 0.01}
+Accuracy on the test set: 80.29%
+---------
+Training SVM with kernel: poly
+Best Parameters: {'C': 1, 'gamma': 1}
+Accuracy on the test set: 75.91%
+---------
+Training SVM with kernel: rbf
+Best Parameters: {'C': 10, 'gamma': 0.1}
+Accuracy on the test set: 81.75%
+---------
+Training SVM with kernel: sigmoid
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 81.75%
+---------
+---------
+Training Doc2Vec with vector_size=50, min_count=5, epochs=30
+Training SVM with kernel: linear
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 66.42%
+---------
+Training SVM with kernel: poly
+Best Parameters: {'C': 10, 'gamma': 1}
+Accuracy on the test set: 63.50%
+---------
+Training SVM with kernel: rbf
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 68.61%
+---------
+Training SVM with kernel: sigmoid
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 67.88%
+---------
+---------
+Training Doc2Vec with vector_size=50, min_count=5, epochs=50
+Training SVM with kernel: linear
+Best Parameters: {'C': 10, 'gamma': 0.01}
+Accuracy on the test set: 69.34%
+---------
+Training SVM with kernel: poly
+Best Parameters: {'C': 1, 'gamma': 1}
+Accuracy on the test set: 64.23%
+---------
+Training SVM with kernel: rbf
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 70.07%
+---------
+Training SVM with kernel: sigmoid
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 69.34%
+---------
+---------
+Training Doc2Vec with vector_size=100, min_count=2, epochs=30
+Training SVM with kernel: linear
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 85.40%
+---------
+Training SVM with kernel: poly
+Best Parameters: {'C': 100, 'gamma': 'scale'}
+Accuracy on the test set: 78.10%
+---------
+Training SVM with kernel: rbf
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 85.40%
+---------
+Training SVM with kernel: sigmoid
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 83.94%
+---------
+---------
+Training Doc2Vec with vector_size=100, min_count=2, epochs=50
+Training SVM with kernel: linear
+Best Parameters: {'C': 10, 'gamma': 0.01}
+Accuracy on the test set: 80.29%
+---------
+Training SVM with kernel: poly
+Best Parameters: {'C': 1, 'gamma': 1}
+Accuracy on the test set: 78.83%
+---------
+Training SVM with kernel: rbf
+Best Parameters: {'C': 10, 'gamma': 0.1}
+Accuracy on the test set: 80.29%
+---------
+Training SVM with kernel: sigmoid
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 77.37%
+---------
+---------
+Training Doc2Vec with vector_size=100, min_count=5, epochs=30
+Training SVM with kernel: linear
+Best Parameters: {'C': 10, 'gamma': 0.01}
+Accuracy on the test set: 70.80%
+---------
+Training SVM with kernel: poly
+Best Parameters: {'C': 100, 'gamma': 'scale'}
+Accuracy on the test set: 67.88%
+---------
+Training SVM with kernel: rbf
+Best Parameters: {'C': 10, 'gamma': 0.1}
+Accuracy on the test set: 69.34%
+---------
+Training SVM with kernel: sigmoid
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 70.07%
+---------
+---------
+Training Doc2Vec with vector_size=100, min_count=5, epochs=50
+Training SVM with kernel: linear
+Best Parameters: {'C': 10, 'gamma': 0.01}
+Accuracy on the test set: 68.61%
+---------
+Training SVM with kernel: poly
+Best Parameters: {'C': 10, 'gamma': 'scale'}
+Accuracy on the test set: 64.23%
+---------
+Training SVM with kernel: rbf
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 70.80%
+---------
+Training SVM with kernel: sigmoid
+Best Parameters: {'C': 100, 'gamma': 0.01}
+Accuracy on the test set: 68.61%
+---------
+
+Process finished with exit code 0
