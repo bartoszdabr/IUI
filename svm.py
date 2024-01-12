@@ -5,6 +5,7 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.svm import SVC
+from sklearn.model_selection import GridSearchCV
 
 
 def augment_text(text):
@@ -42,10 +43,16 @@ def svm_flow(df):
                                                         random_state=42)
 
     svm_model = SVC()
-    svm_model.fit(X_train, Y_train)
+
+    # Hyperparameter tuning
+    param_grid = {'C': [0.1, 1, 10, 100], 'gamma': [0.01, 0.1, 1, 'scale', 'auto']}
+    grid_search = GridSearchCV(svm_model, param_grid, cv=5, scoring='accuracy', n_jobs=-1)
+    grid_search.fit(X_train, Y_train)
+    print("Best Parameters:", grid_search.best_params_)
+    best_svm_model = grid_search.best_estimator_
 
     # Predict on the test set
-    y_pred = svm_model.predict(X_test)
+    y_pred = best_svm_model.predict(X_test)
 
     # Calculate accuracy
     accuracy = accuracy_score(Y_test, y_pred)
