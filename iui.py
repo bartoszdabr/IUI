@@ -2,10 +2,7 @@ import argparse
 import pandas as pd
 
 from bayes import bayes_flow
-from roberta import roberta_flow
-
-
-# from svm import svm_flow
+from svm import svm_flow
 
 
 def parse_args() -> str:
@@ -30,7 +27,7 @@ if __name__ == "__main__":
     if model_type == 'bayes':
         bayes_flow(df)
     elif model_type == 'roberta':
+        from roberta import roberta_flow # imported at this stage to avoid loading tf if not needed
         roberta_flow(df)
     elif model_type == 'svm':
-        pass
-        # svm_flow(df)
+        svm_flow(df)
