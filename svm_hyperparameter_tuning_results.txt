@@ -1,148 +1,118 @@
-C:\Users\bdabrows\PycharmProjects\iui\IUI\venv\Scripts\python.exe C:\Users\bdabrows\PycharmProjects\iui\IUI\iui.py --model svm --language pl
+C:\Users\UserPC\anaconda3\envs\tensorflow\pythonw.exe C:/Users/UserPC/PycharmProjects/IUI/iui.py --model svm --language pl
+C:\Users\UserPC\anaconda3\envs\tensorflow\lib\site-packages\gensim\similarities\__init__.py:15: UserWarning: The gensim.similarities.levenshtein submodule is disabled, because the optional Levenshtein package <https://pypi.org/project/python-Levenshtein/> is unavailable. Install Levenhstein (e.g. `pip install python-Levenshtein`) to suppress this warning.
+  warnings.warn(msg)
 Training svm | language: pl
 ---------
 Training Doc2Vec with vector_size=50, min_count=2, epochs=30
 Training SVM with kernel: linear
-Best Parameters: {'C': 10, 'gamma': 0.01}
-Accuracy on the test set: 84.67%
----------
-Training SVM with kernel: poly
-Best Parameters: {'C': 100, 'gamma': 'scale'}
-Accuracy on the test set: 80.29%
----------
-Training SVM with kernel: rbf
-Best Parameters: {'C': 10, 'gamma': 0.1}
-Accuracy on the test set: 83.94%
----------
-Training SVM with kernel: sigmoid
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 83.94%
+Best Parameters: {'C': 1, 'gamma': 0.01}
+Accuracy on the test set: 88.32%
+Top words for class 'inne': pracy, umowy, lekarza, obowiązek, pracodawca, pracę, zostać, zrobić, sprawie, przypadku, lekarz, podstawie, należy, związku
+Top words for class 'prawo administracyjne': lekarza, sprawie, lekarz, związku, pracy, obowiązek, umowy, zostać, należy, zrobić, pracodawca, pracę, przypadku, podstawie
+Top words for class 'prawo cywilne': lekarz, pracy, związku, lekarza, pracę, zrobić, pracodawca, obowiązek, należy, przypadku, umowy, zostać, sprawie, podstawie
+Top words for class 'prawo farmaceutyczne': pracy, lekarz, zrobić, zostać, związku, lekarza, pracę, przypadku, obowiązek, umowy, pracodawca, sprawie, należy, podstawie
+Top words for class 'prawo karne': pracy, przypadku, lekarz, związku, lekarza, umowy, pracę, obowiązek, sprawie, zrobić, zostać, pracodawca, należy, podstawie
+Top words for class 'prawo medyczne': pracy, lekarz, związku, umowy, pracodawca, zrobić, obowiązek, sprawie, przypadku, lekarza, podstawie, pracę, zostać, należy
+Top words for class 'prawo podatkowe': zostać, przypadku, pracodawca, związku, umowy, pracy, lekarza, lekarz, obowiązek, należy, zrobić, pracę, sprawie, podstawie
+Top words for class 'prawo pracy': sprawie, związku, lekarz, należy, zostać, obowiązek, zrobić, lekarza, pracodawca, pracę, przypadku, pracy, umowy, podstawie
 ---------
 ---------
 Training Doc2Vec with vector_size=50, min_count=2, epochs=50
 Training SVM with kernel: linear
-Best Parameters: {'C': 10, 'gamma': 0.01}
-Accuracy on the test set: 80.29%
----------
-Training SVM with kernel: poly
-Best Parameters: {'C': 1, 'gamma': 1}
-Accuracy on the test set: 75.91%
----------
-Training SVM with kernel: rbf
-Best Parameters: {'C': 10, 'gamma': 0.1}
-Accuracy on the test set: 81.75%
----------
-Training SVM with kernel: sigmoid
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 81.75%
+Best Parameters: {'C': 1, 'gamma': 0.01}
+Accuracy on the test set: 79.56%
+Top words for class 'inne': pracy, lekarza, pracodawca, pracę, zostać, obowiązek, umowy, przypadku, lekarz, związku, podstawie, zrobić, sprawie, należy
+Top words for class 'prawo administracyjne': związku, obowiązek, pracodawca, zrobić, lekarza, lekarz, umowy, pracę, zostać, pracy, sprawie, przypadku, należy, podstawie
+Top words for class 'prawo cywilne': pracodawca, związku, pracy, lekarza, pracę, obowiązek, przypadku, lekarz, umowy, zrobić, sprawie, należy, zostać, podstawie
+Top words for class 'prawo farmaceutyczne': pracy, pracodawca, związku, zostać, przypadku, lekarz, pracę, lekarza, umowy, sprawie, zrobić, obowiązek, należy, podstawie
+Top words for class 'prawo karne': pracy, związku, pracę, obowiązek, lekarz, pracodawca, lekarza, przypadku, zrobić, umowy, zostać, sprawie, należy, podstawie
+Top words for class 'prawo medyczne': pracodawca, zrobić, pracy, związku, lekarz, przypadku, lekarza, obowiązek, umowy, zostać, sprawie, pracę, podstawie, należy
+Top words for class 'prawo podatkowe': związku, przypadku, pracodawca, pracy, umowy, lekarza, obowiązek, zostać, pracę, lekarz, sprawie, zrobić, podstawie, należy
+Top words for class 'prawo pracy': sprawie, związku, zostać, lekarz, zrobić, przypadku, należy, pracodawca, obowiązek, lekarza, umowy, pracy, podstawie, pracę
 ---------
 ---------
 Training Doc2Vec with vector_size=50, min_count=5, epochs=30
 Training SVM with kernel: linear
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 66.42%
----------
-Training SVM with kernel: poly
-Best Parameters: {'C': 10, 'gamma': 1}
-Accuracy on the test set: 63.50%
----------
-Training SVM with kernel: rbf
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 68.61%
----------
-Training SVM with kernel: sigmoid
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 67.88%
+Best Parameters: {'C': 1, 'gamma': 0.01}
+Accuracy on the test set: 74.45%
+Top words for class 'inne': obowiązek, umowy, lekarza, przypadku, zostać, zrobić, lekarz, podstawie, pracy, pracodawca, pracę, związku, sprawie, należy
+Top words for class 'prawo administracyjne': lekarza, umowy, obowiązek, lekarz, zostać, sprawie, zrobić, pracodawca, związku, przypadku, pracę, pracy, należy, podstawie
+Top words for class 'prawo cywilne': obowiązek, lekarz, związku, zrobić, pracy, umowy, zostać, pracodawca, pracę, lekarza, podstawie, przypadku, sprawie, należy
+Top words for class 'prawo farmaceutyczne': pracy, obowiązek, lekarza, zostać, związku, pracodawca, zrobić, lekarz, przypadku, umowy, pracę, sprawie, podstawie, należy
+Top words for class 'prawo karne': obowiązek, umowy, zrobić, przypadku, lekarza, związku, pracodawca, pracę, zostać, lekarz, pracy, sprawie, podstawie, należy
+Top words for class 'prawo medyczne': obowiązek, pracy, umowy, zrobić, lekarz, pracodawca, lekarza, sprawie, przypadku, podstawie, związku, zostać, należy, pracę
+Top words for class 'prawo podatkowe': umowy, obowiązek, przypadku, zostać, zrobić, związku, pracodawca, lekarza, lekarz, pracy, pracę, sprawie, podstawie, należy
+Top words for class 'prawo pracy': sprawie, należy, lekarz, pracodawca, zrobić, pracę, związku, zostać, lekarza, obowiązek, pracy, umowy, przypadku, podstawie
 ---------
 ---------
 Training Doc2Vec with vector_size=50, min_count=5, epochs=50
 Training SVM with kernel: linear
-Best Parameters: {'C': 10, 'gamma': 0.01}
-Accuracy on the test set: 69.34%
----------
-Training SVM with kernel: poly
-Best Parameters: {'C': 1, 'gamma': 1}
-Accuracy on the test set: 64.23%
----------
-Training SVM with kernel: rbf
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 70.07%
----------
-Training SVM with kernel: sigmoid
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 69.34%
+Best Parameters: {'C': 1, 'gamma': 0.01}
+Accuracy on the test set: 71.53%
+Top words for class 'inne': lekarza, obowiązek, umowy, zrobić, przypadku, pracodawca, lekarz, podstawie, zostać, pracę, pracy, sprawie, związku, należy
+Top words for class 'prawo administracyjne': obowiązek, lekarz, umowy, zrobić, lekarza, przypadku, sprawie, zostać, pracodawca, pracy, związku, należy, pracę, podstawie
+Top words for class 'prawo cywilne': obowiązek, zrobić, lekarza, lekarz, umowy, związku, zostać, należy, pracę, podstawie, pracy, sprawie, pracodawca, przypadku
+Top words for class 'prawo farmaceutyczne': zrobić, zostać, lekarz, lekarza, obowiązek, umowy, przypadku, pracy, sprawie, pracodawca, związku, pracę, należy, podstawie
+Top words for class 'prawo karne': obowiązek, zrobić, lekarza, umowy, pracodawca, lekarz, przypadku, związku, zostać, pracę, pracy, sprawie, należy, podstawie
+Top words for class 'prawo medyczne': obowiązek, zrobić, lekarz, umowy, lekarza, przypadku, pracodawca, pracy, sprawie, zostać, związku, należy, podstawie, pracę
+Top words for class 'prawo podatkowe': obowiązek, umowy, zrobić, lekarza, pracodawca, zostać, przypadku, lekarz, związku, pracy, sprawie, podstawie, pracę, należy
+Top words for class 'prawo pracy': sprawie, związku, pracodawca, należy, lekarz, obowiązek, zrobić, zostać, pracy, pracę, lekarza, umowy, przypadku, podstawie
 ---------
 ---------
 Training Doc2Vec with vector_size=100, min_count=2, epochs=30
 Training SVM with kernel: linear
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 85.40%
----------
-Training SVM with kernel: poly
-Best Parameters: {'C': 100, 'gamma': 'scale'}
-Accuracy on the test set: 78.10%
----------
-Training SVM with kernel: rbf
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 85.40%
----------
-Training SVM with kernel: sigmoid
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 83.94%
+Best Parameters: {'C': 1, 'gamma': 0.01}
+Accuracy on the test set: 86.86%
+Top words for class 'inne': wynagrodzenia, obowiązek, możliwość, ramach, lekarz, lekarza, pracodawca, przedmiotowej, covid, pacjenta, odmówić, r, wspólnoty, żądać, zgody, mieszkaniowej, sytuacji, apteki, pracy, epidemii
+Top words for class 'prawo administracyjne': oddziale, podjąć, epidemii, ramach, żądać, możliwość, odmówić, r, związku, lekarza, przedmiotowej, przypadku, apteki, obowiązek, pacjenta, wynagrodzenia, sprawie, przysługuje, prawem, pracy
+Top words for class 'prawo cywilne': odmówić, pacjenta, wynagrodzenia, prawa, zrobić, przypadku, pracy, zgody, wypowiedzenia, mieszkaniowej, żądać, epidemii, przedmiotowej, zostać, związku, wspólnoty, pracownika, podstawie, kroki, covid
+Top words for class 'prawo farmaceutyczne': mieszkaniowej, zgody, zostać, wspólnoty, pracę, podstawie, epidemii, klientkę, prawa, obowiązek, apteki, podjąć, wypowiedzenia, pacjenta, odmówić, wynagrodzenia, odpowiedzialność, oddziale, przedmiotowej, ramach
+Top words for class 'prawo karne': oddziale, odpowiedzialność, prawa, wynagrodzenia, mieszkaniowej, podjąć, okres, pracy, możliwość, obowiązek, odmówić, epidemii, zgody, zostać, przedmiotowej, ramach, wspólnoty, prawo, żądać, klientkę
+Top words for class 'prawo medyczne': wspólnoty, wynagrodzenia, należy, prawa, oddziale, kroki, pracownika, odmówić, obowiązek, zrobić, pracy, sprawie, prawem, podjąć, wypowiedzenia, zgody, r, sytuacji, umowę, odpowiedzialność
+Top words for class 'prawo podatkowe': oddziale, żądać, przedmiotowej, okres, możliwość, lekarza, apteki, epidemii, mieszkaniowej, prawem, ramach, podjąć, zgody, pracy, wynagrodzenia, nieruchomości, zostać, pracę, wspólnoty, przypadku
+Top words for class 'prawo pracy': przypadku, oddziale, prawa, podjąć, epidemii, kroki, sprawie, umowy, przysługuje, urlopu, prawo, pracy, umowę, wypowiedzenia, zostać, apteki, pracownika, pracę, odmówić, przedmiotowej
 ---------
 ---------
 Training Doc2Vec with vector_size=100, min_count=2, epochs=50
 Training SVM with kernel: linear
-Best Parameters: {'C': 10, 'gamma': 0.01}
-Accuracy on the test set: 80.29%
----------
-Training SVM with kernel: poly
-Best Parameters: {'C': 1, 'gamma': 1}
-Accuracy on the test set: 78.83%
----------
-Training SVM with kernel: rbf
-Best Parameters: {'C': 10, 'gamma': 0.1}
-Accuracy on the test set: 80.29%
----------
-Training SVM with kernel: sigmoid
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 77.37%
+Best Parameters: {'C': 1, 'gamma': 0.01}
+Accuracy on the test set: 81.02%
+Top words for class 'inne': pracodawca, lekarza, zrobić, prawem, ramach, kroki, pacjenta, sytuacji, obowiązek, przedmiotowej, zgody, r, lekarz, covid, wynagrodzenia, żądać, nieruchomości, wspólnoty, podjąć, należy
+Top words for class 'prawo administracyjne': epidemii, podjąć, przedmiotowej, oddziale, pacjenta, pracy, r, odmówić, sprawie, kroki, prawo, ramach, lekarza, pracodawca, zostać, żądać, mieszkaniowej, pracodawcy, przypadku, wynagrodzenia
+Top words for class 'prawo cywilne': zrobić, oddziale, lekarza, przypadku, prawa, r, pracodawca, wynagrodzenia, kroki, odmówić, pracodawcy, zostać, zgody, pracownika, prawo, obowiązek, żądać, pacjenta, wypowiedzenia, epidemii
+Top words for class 'prawo farmaceutyczne': mieszkaniowej, zostać, wspólnoty, klientkę, podstawie, podjąć, zgody, epidemii, sprawie, oddziale, ramach, prawa, zrobić, odmówić, pracę, kroki, apteki, przysługuje, prawo, pacjenta
+Top words for class 'prawo karne': wynagrodzenia, oddziale, pracodawcy, prawa, prawo, przedmiotowej, r, zostać, pracodawca, odpowiedzialność, żądać, lekarza, ramach, kroki, odmówić, okres, związku, pracy, epidemii, podjąć
+Top words for class 'prawo medyczne': obowiązek, oddziale, kroki, wynagrodzenia, lekarza, sprawie, prawem, wspólnoty, pracy, przedmiotowej, możliwość, pacjenta, nieruchomości, zgody, r, podjąć, okres, ramach, prawa, epidemii
+Top words for class 'prawo podatkowe': oddziale, ramach, r, przedmiotowej, pracodawcy, covid, prawem, lekarza, prawa, wynagrodzenia, żądać, pacjenta, okres, prawo, epidemii, zostać, podjąć, mieszkaniowej, zgody, pracy
+Top words for class 'prawo pracy': oddziale, podjąć, sprawie, kroki, pracy, przysługuje, urlopu, epidemii, prawa, mieszkaniowej, umowę, przedmiotowej, umowy, odmówić, pracodawcy, apteki, zostać, pracownika, przypadku, sytuacji
 ---------
 ---------
 Training Doc2Vec with vector_size=100, min_count=5, epochs=30
 Training SVM with kernel: linear
 Best Parameters: {'C': 10, 'gamma': 0.01}
-Accuracy on the test set: 70.80%
----------
-Training SVM with kernel: poly
-Best Parameters: {'C': 100, 'gamma': 'scale'}
-Accuracy on the test set: 67.88%
----------
-Training SVM with kernel: rbf
-Best Parameters: {'C': 10, 'gamma': 0.1}
-Accuracy on the test set: 69.34%
----------
-Training SVM with kernel: sigmoid
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 70.07%
+Accuracy on the test set: 73.72%
+Top words for class 'inne': ramach, lekarz, sytuacji, pacjentów, możliwość, kroki, wypowiedzenia, obowiązek, wspólnoty, przedmiotowej, związku, wynagrodzenia, żądać, prawem, klientkę, apteki, covid, podjąć, pracy, umowę
+Top words for class 'prawo administracyjne': prawo, ramach, lekarz, pacjentów, pracodawca, apteki, sytuacji, przypadku, wspólnoty, przysługuje, umowę, możliwość, oddziale, prawem, przedmiotowej, urlopu, sprawie, prawa, związku, klientkę
+Top words for class 'prawo cywilne': kroki, pacjentów, przypadku, sytuacji, prawa, odmówić, urlopu, wspólnoty, pracodawca, mieszkaniowej, prawo, ramach, możliwość, sprawie, lekarz, przedmiotowej, przysługuje, podstawie, oddziale, umowę
+Top words for class 'prawo farmaceutyczne': sytuacji, wspólnoty, pacjentów, wypowiedzenia, kroki, ramach, podjąć, podstawie, apteki, mieszkaniowej, pracę, lekarz, obowiązek, odpowiedzialność, pracodawcy, zrobić, prawa, prawo, oddziale, umowę
+Top words for class 'prawo karne': prawo, pacjentów, wspólnoty, sytuacji, odpowiedzialność, wynagrodzenia, ramach, możliwość, prawa, kroki, klientkę, przypadku, zgody, mieszkaniowej, lekarz, wypowiedzenia, związku, odmówić, pracy, umowy
+Top words for class 'prawo medyczne': wspólnoty, obowiązek, żądać, sprawie, pracodawca, lekarz, sytuacji, apteki, podjąć, oddziale, ramach, wypowiedzenia, podstawie, prawa, zgody, mieszkaniowej, kroki, przysługuje, umowę, należy
+Top words for class 'prawo podatkowe': pacjentów, prawo, ramach, związku, umowę, przedmiotowej, sprawie, przypadku, kroki, wynagrodzenia, pracodawca, sytuacji, prawa, epidemii, oddziale, wspólnoty, przysługuje, lekarz, okres, wypowiedzenia
+Top words for class 'prawo pracy': pracodawca, podjąć, oddziale, umowę, przypadku, przysługuje, prawo, zgody, epidemii, apteki, pracodawcy, prawa, umowy, wynagrodzenia, sprawie, prawem, obowiązek, kroki, pracy, pracownika
 ---------
 ---------
 Training Doc2Vec with vector_size=100, min_count=5, epochs=50
 Training SVM with kernel: linear
-Best Parameters: {'C': 10, 'gamma': 0.01}
-Accuracy on the test set: 68.61%
----------
-Training SVM with kernel: poly
-Best Parameters: {'C': 10, 'gamma': 'scale'}
-Accuracy on the test set: 64.23%
----------
-Training SVM with kernel: rbf
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 70.80%
----------
-Training SVM with kernel: sigmoid
-Best Parameters: {'C': 100, 'gamma': 0.01}
-Accuracy on the test set: 68.61%
+Best Parameters: {'C': 1, 'gamma': 0.01}
+Accuracy on the test set: 75.91%
+Top words for class 'inne': przedmiotowej, ramach, sytuacji, kroki, możliwość, obowiązek, pacjentów, odmówić, prawo, związku, pracy, epidemii, lekarz, zrobić, nieruchomości, pracę, przysługuje, wypowiedzenia, żądać, prawem
+Top words for class 'prawo administracyjne': sytuacji, prawo, pacjentów, przedmiotowej, przysługuje, pracy, ramach, odmówić, epidemii, kroki, przypadku, związku, obowiązek, pracę, możliwość, okres, oddziale, pracodawca, sprawie, lekarz
+Top words for class 'prawo cywilne': kroki, pacjentów, przedmiotowej, odmówić, prawo, sprawie, zrobić, przypadku, prawa, wspólnoty, wypowiedzenia, przysługuje, zgody, lekarz, sytuacji, wynagrodzenia, urlopu, związku, podstawie, epidemii
+Top words for class 'prawo farmaceutyczne': epidemii, sytuacji, kroki, ramach, zrobić, wypowiedzenia, prawo, przysługuje, pacjentów, wspólnoty, pracę, mieszkaniowej, podjąć, oddziale, przedmiotowej, wynagrodzenia, pracy, przypadku, odpowiedzialność, pracodawcy
+Top words for class 'prawo karne': wspólnoty, prawo, kroki, pacjentów, odpowiedzialność, urlopu, lekarz, prawa, sytuacji, możliwość, pracodawcy, przedmiotowej, oddziale, odmówić, pracy, pracodawca, apteki, lekarza, klientkę, zostać
+Top words for class 'prawo medyczne': obowiązek, oddziale, wspólnoty, zgody, sprawie, przedmiotowej, sytuacji, przysługuje, pracy, apteki, epidemii, ramach, podstawie, lekarz, żądać, możliwość, pracodawca, zrobić, okres, lekarza
+Top words for class 'prawo podatkowe': pacjentów, urlopu, możliwość, przedmiotowej, ramach, przypadku, kroki, wspólnoty, pracodawca, zostać, klientkę, lekarz, epidemii, prawem, związku, sytuacji, prawo, prawa, oddziale, przysługuje
+Top words for class 'prawo pracy': pracodawca, przypadku, podjąć, oddziale, przysługuje, umowę, prawa, epidemii, sprawie, prawo, odmówić, pracy, klientkę, zgody, związku, urlopu, lekarza, apteki, zostać, sytuacji
 ---------
 
 Process finished with exit code 0
