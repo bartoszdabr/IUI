@@ -6,7 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.svm import SVC
 from sklearn.model_selection import GridSearchCV
-from sklearn.decomposition import PCA
+from sklearn.model_selection import cross_val_score
 
 
 stopwords_file1 = "stopwords.txt"
@@ -67,6 +67,11 @@ def svm_flow(df):
                     grid_search.fit(X_train, Y_train)
                     print("Best Parameters:", grid_search.best_params_)
                     best_svm_model = grid_search.best_estimator_
+
+                    # Calculate cross validation
+                    cv_scores = cross_val_score(best_svm_model, X_train, Y_train, cv=5, scoring='accuracy', n_jobs=-1)
+                    print("Cross-Validation Scores:", cv_scores)
+                    print("Mean Accuracy:", np.mean(cv_scores))
 
                     # Predict on the test set
                     y_pred = best_svm_model.predict(X_test)
